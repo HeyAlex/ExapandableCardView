@@ -16,10 +16,10 @@ class ExpandableCardView @JvmOverloads constructor(
     private var headerView: View? = null
     private var contentView: View? = null
 
-    @IntegerRes
+    @LayoutRes
     private var headerViewRes: Int = 0
 
-    @IntegerRes
+    @LayoutRes
     private var contentViewRes: Int = 0
 
     init {
