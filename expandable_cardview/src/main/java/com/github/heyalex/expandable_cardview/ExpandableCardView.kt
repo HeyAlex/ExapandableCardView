@@ -19,6 +19,7 @@ class ExpandableCardView @JvmOverloads constructor(
 
     private lateinit var headerView: View
     private lateinit var contentView: View
+    private var isExpandedOnStart: Boolean = false
 
     @LayoutRes
     private var headerViewRes: Int = 0
@@ -42,6 +43,7 @@ class ExpandableCardView @JvmOverloads constructor(
             typedArray.getResourceId(R.styleable.ExpandableCardView_header_view, View.NO_ID)
         contentViewRes =
             typedArray.getResourceId(R.styleable.ExpandableCardView_content_view, View.NO_ID)
+        isExpandedOnStart = typedArray.getBoolean(R.styleable.ExpandableCardView_expanded, false)
         typedArray.recycle()
     }
 
@@ -52,6 +54,10 @@ class ExpandableCardView @JvmOverloads constructor(
 
         card_content.layoutResource = contentViewRes
         contentView = card_content.inflate()
+
+        if(!isExpandedOnStart) {
+            collapse(contentView, 0)
+        }
 
         headerView.setOnClickListener {
             if (isExpanded) {
@@ -95,7 +101,7 @@ class ExpandableCardView @JvmOverloads constructor(
         }
     }
 
-    fun collapse(contentView: View) {
+    fun collapse(contentView: View, timeAnim: Long = animDuration) {
         if (isMoving) return
         isMoving = true
         val finalHeight = contentView.height
@@ -106,6 +112,7 @@ class ExpandableCardView @JvmOverloads constructor(
                 isExpanded = false
                 isMoving = false
             }
+            duration = timeAnim
             start()
         }
     }
