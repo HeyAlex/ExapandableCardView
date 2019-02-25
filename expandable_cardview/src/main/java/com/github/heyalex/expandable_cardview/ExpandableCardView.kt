@@ -34,7 +34,7 @@ class ExpandableCardView @JvmOverloads constructor(
 
     private var isMoving: Boolean = false
 
-    private var animDuration: Long = 400
+    private var animDuration: Long = context.resources.getInteger(R.integer.duration).toLong()
 
     init {
         LayoutInflater.from(context).inflate(R.layout.expandable_cardview, this)
