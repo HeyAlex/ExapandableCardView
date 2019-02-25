@@ -26,7 +26,9 @@ class ExpandableCardView @JvmOverloads constructor(
     @LayoutRes
     private var contentViewRes: Int = 0
 
-    var isExpanded = true
+    private var slideAnimator: ValueAnimator? = null
+
+    var isExpanded = false
         private set
 
     init {
@@ -47,89 +49,70 @@ class ExpandableCardView @JvmOverloads constructor(
         card_content.layoutResource = contentViewRes
         contentView = card_content.inflate()
 
-        headerView?.setOnClickListener {
+        headerView.setOnClickListener {
             if (isExpanded) {
-                isExpanded = false
-                collapse(contentView!!)
+                collapse(contentView)
             } else {
-                isExpanded = true
-                expand(contentView!!)
+                expand(contentView)
             }
-
         }
     }
-
-    private var mAnimator: ValueAnimator? = null
 
     private fun slideAnimator(start: Int, end: Int): ValueAnimator {
         val mAnimator = ValueAnimator.ofInt(start, end)
 
         mAnimator.addUpdateListener { valueAnimator ->
-            //Update Height
             val value = valueAnimator.animatedValue as Int
-            val layoutParams = contentView?.getLayoutParams()
+            val layoutParams = contentView.layoutParams
             layoutParams?.height = value
-            contentView?.setLayoutParams(layoutParams)
+            contentView.layoutParams = layoutParams
         }
         return mAnimator
     }
 
-    private fun expand(v: View) {
+    fun expand(v: View) {
         v.visibility = View.VISIBLE
 
         v.measure(
-            View.MeasureSpec.makeMeasureSpec(root.getWidth(), View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(root.width, View.MeasureSpec.EXACTLY),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
 
         val targetHeight = v.measuredHeight
 
-        mAnimator = slideAnimator(0, targetHeight)
-        mAnimator?.setDuration(400)
-        mAnimator?.start()
+        slideAnimator = slideAnimator(0, targetHeight)
+        slideAnimator?.duration = 400
+        slideAnimator?.start()
     }
 
-    private fun collapse(v: View) {
+    fun collapse(v: View) {
+
         val finalHeight = v.height
 
-        mAnimator = slideAnimator(finalHeight, 0)
+        slideAnimator = slideAnimator(finalHeight, 0)
 
-        mAnimator?.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animator: Animator) {
+        slideAnimator?.onAnimationEnd {
+            contentView.visibility = View.GONE
+            isExpanded = false
+        }
+        slideAnimator?.start()
+    }
 
+    fun ValueAnimator.onAnimationEnd(onAnimationEnd: () -> Unit) {
+        addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(animation: Animator?) {
             }
 
-            override fun onAnimationEnd(animator: Animator) {
-                //Height=0, but it set visibility to GONE
-                contentView?.setVisibility(View.GONE)
+            override fun onAnimationEnd(animation: Animator?) {
+                onAnimationEnd()
             }
 
-            override fun onAnimationCancel(animator: Animator) {
-
+            override fun onAnimationStart(animation: Animator?) {
             }
 
-            override fun onAnimationRepeat(animator: Animator) {
-
+            override fun onAnimationCancel(animation: Animator?) {
             }
         })
-        mAnimator?.start()
     }
-//    private fun animateCardView(to: Float) {
-//        contentView?.animate()?.y(to)?.setInterpolator(AccelerateDecelerateInterpolator())
-//            ?.setDuration(400)
-//    }
-//
-//    fun expand() {
-//        isExpanded = true
-//        contentView?.measuredHeight?.toFloat()?.let {
-//            animateCardView(it)
-//        }
-//    }
-//
-//    fun collapse() {
-//        isExpanded = false
-//        animateCardView(0f)
-//    }
-
 
 }
