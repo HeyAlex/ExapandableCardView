@@ -4,5 +4,6 @@
         <attr name="header_view" format="reference"/>
         <attr name="content_view" format="reference"/>
         <attr name="expanded" format="boolean"/>
+        <attr name="animation_duration" format="integer"/>
     </declare-styleable>
 </resources>
