@@ -17,8 +17,8 @@ class ExpandableCardView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr) {
 
-    private var headerView: View? = null
-    private var contentView: View? = null
+    private lateinit var headerView: View
+    private lateinit var contentView: View
 
     @LayoutRes
     private var headerViewRes: Int = 0
