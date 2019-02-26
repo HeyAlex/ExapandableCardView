@@ -6,13 +6,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
-import android.view.ViewGroup
-
-
-
 
 class ExpandableCardView @JvmOverloads constructor(
     context: Context,
@@ -55,7 +53,10 @@ class ExpandableCardView @JvmOverloads constructor(
             typedArray.getResourceId(R.styleable.ExpandableCardView_content_view, View.NO_ID)
         isExpandedOnStart = typedArray.getBoolean(R.styleable.ExpandableCardView_expanded, false)
         val defaultDuration = context.resources.getInteger(R.integer.duration)
-        animDuration = typedArray.getInteger(R.styleable.ExpandableCardView_animation_duration, defaultDuration).toLong()
+        animDuration = typedArray.getInteger(
+            R.styleable.ExpandableCardView_animation_duration,
+            defaultDuration
+        ).toLong()
         typedArray.recycle()
     }
 
@@ -69,7 +70,7 @@ class ExpandableCardView @JvmOverloads constructor(
 
         initClickListeners()
 
-        if(!isExpandedOnStart) {
+        if (!isExpandedOnStart) {
             collapse(timeAnim = 0)
         }
 
