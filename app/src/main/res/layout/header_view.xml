@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/card_title"
+        android:tag="@string/click_marker"
         android:src="@drawable/ic_launcher_background" />
 
     <TextView

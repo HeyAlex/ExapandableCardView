@@ -9,4 +9,13 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="@string/app_name"/>
+
+    <ImageButton
+        android:id="@+id/card_icon"
+        android:layout_width="wrap_content"
+        android:tag="@string/click_marker"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/card_title"
+        android:src="@drawable/ic_launcher_background" />
 </LinearLayout>

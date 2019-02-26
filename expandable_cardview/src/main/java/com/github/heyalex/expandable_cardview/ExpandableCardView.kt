@@ -9,6 +9,9 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
+import android.view.ViewGroup
+
+
 
 
 class ExpandableCardView @JvmOverloads constructor(
@@ -36,6 +39,13 @@ class ExpandableCardView @JvmOverloads constructor(
 
     private var animDuration: Long
 
+    private val defaultClickListener = OnClickListener {
+        if (isExpanded)
+            collapse()
+        else
+            expand()
+    }
+
     init {
         LayoutInflater.from(context).inflate(R.layout.expandable_cardview, this)
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableCardView)
@@ -57,15 +67,17 @@ class ExpandableCardView @JvmOverloads constructor(
         card_content.layoutResource = contentViewRes
         contentView = card_content.inflate()
 
+        initClickListeners()
+
         if(!isExpandedOnStart) {
-            collapse(contentView, 0)
+            collapse(timeAnim = 0)
         }
 
         headerView.setOnClickListener {
             if (isExpanded) {
-                collapse(contentView)
+                collapse()
             } else {
-                expand(contentView)
+                expand()
             }
         }
     }
@@ -87,7 +99,7 @@ class ExpandableCardView @JvmOverloads constructor(
         contentView.visibility = View.VISIBLE
 
         contentView.measure(
-            View.MeasureSpec.makeMeasureSpec(root.width, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(card_root.width, View.MeasureSpec.EXACTLY),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
 
@@ -134,5 +146,30 @@ class ExpandableCardView @JvmOverloads constructor(
             override fun onAnimationCancel(animation: Animator?) {
             }
         })
+    }
+
+    private fun initClickListeners() {
+        val views = getViewsByTag(card_root, context.resources.getString(R.string.click_marker))
+        views.forEach {
+            it.setOnClickListener(defaultClickListener)
+        }
+    }
+
+    private fun getViewsByTag(root: ViewGroup, tag: String): ArrayList<View> {
+        val views = ArrayList<View>()
+        val childCount = root.childCount
+        for (i in 0 until childCount) {
+            val child = root.getChildAt(i)
+            if (child is ViewGroup) {
+                views.addAll(getViewsByTag(child, tag))
+            }
+
+            val tagObj = child.tag
+            if (tagObj != null && tagObj == tag) {
+                views.add(child)
+            }
+
+        }
+        return views
     }
 }
