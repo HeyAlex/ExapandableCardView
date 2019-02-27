@@ -34,7 +34,6 @@ class ExpandableCardView @JvmOverloads constructor(
         private set
 
     private var isMoving: Boolean = false
-
     private var animDuration: Long
 
     private val defaultClickListener = OnClickListener {
@@ -43,6 +42,8 @@ class ExpandableCardView @JvmOverloads constructor(
         else
             expand()
     }
+
+    private var listener: OnExpandChangeListener? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.expandable_cardview, this)
@@ -129,6 +130,18 @@ class ExpandableCardView @JvmOverloads constructor(
             }
             duration = timeAnim
             start()
+        }
+    }
+
+    fun setOnExpandChangeListener(expandChangeListener: OnExpandChangeListener) {
+        listener = expandChangeListener
+    }
+
+    fun setOnExpandChangeListener(expandChangeUnit: (Boolean) -> Unit) {
+        listener = object: OnExpandChangeListener {
+            override fun OnExpandChanged(isExpanded: Boolean) {
+                expandChangeUnit(isExpanded)
+            }
         }
     }
 

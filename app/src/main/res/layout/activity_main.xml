@@ -9,6 +9,7 @@
 
     <com.github.heyalex.expandable_cardview.ExpandableCardView
         android:layout_width="match_parent"
+        android:id="@+id/expanded_card"
         android:layout_height="wrap_content"
         app:content_view="@layout/content_view"
         app:expanded="true"
