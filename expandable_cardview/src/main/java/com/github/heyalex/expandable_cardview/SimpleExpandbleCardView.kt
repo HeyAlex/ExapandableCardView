@@ -3,7 +3,7 @@ package com.github.heyalex.expandable_cardview
 import android.content.Context
 import android.util.AttributeSet
 
-class SimpleExpandbleCardView @JvmOverloads constructor(
+class SimpleExpandableCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
