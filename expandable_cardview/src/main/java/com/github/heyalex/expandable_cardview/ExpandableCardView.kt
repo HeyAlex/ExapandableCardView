@@ -12,7 +12,7 @@ import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
 
-class ExpandableCardView @JvmOverloads constructor(
+open class ExpandableCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

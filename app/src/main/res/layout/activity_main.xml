@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <com.github.heyalex.expandable_cardview.ExpandableCardView
-        android:layout_width="match_parent"
         android:id="@+id/expanded_card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:content_view="@layout/content_view"
         app:expanded="true"
@@ -25,4 +25,12 @@
         app:header_view="@layout/header_view">
 
     </com.github.heyalex.expandable_cardview.ExpandableCardView>
+
+    <com.github.heyalex.expandable_cardview.SimpleExpandbleCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:content_view="@layout/content_view"
+        app:expanded="false">
+
+    </com.github.heyalex.expandable_cardview.SimpleExpandbleCardView>
 </LinearLayout>
