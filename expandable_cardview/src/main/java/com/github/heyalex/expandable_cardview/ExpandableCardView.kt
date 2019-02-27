@@ -133,6 +133,10 @@ class ExpandableCardView @JvmOverloads constructor(
         }
     }
 
+    fun removeOnExpandChangeListener() {
+        this.listener = null
+    }
+
     fun setOnExpandChangeListener(expandChangeListener: OnExpandChangeListener) {
         listener = expandChangeListener
     }
