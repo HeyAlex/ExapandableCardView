@@ -9,4 +9,13 @@ class SimpleExpandableCardView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ExpandableCardView(context, attrs, defStyleAttr) {
 
+    private var title: String?
+
+    init {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleExpandableCardView)
+        title = typedArray.getString(R.styleable.SimpleExpandableCardView_title)
+        headerViewRes = R.layout.simple_cardview_header
+        typedArray.recycle()
+    }
+
 }

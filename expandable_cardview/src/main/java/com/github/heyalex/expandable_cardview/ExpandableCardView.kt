@@ -23,7 +23,7 @@ open class ExpandableCardView @JvmOverloads constructor(
     private var isExpandedOnStart: Boolean = false
 
     @LayoutRes
-    private var headerViewRes: Int = 0
+    protected var headerViewRes: Int = 0
 
     @LayoutRes
     private var contentViewRes: Int = 0
