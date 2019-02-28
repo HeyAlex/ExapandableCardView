@@ -8,6 +8,7 @@
     </declare-styleable>
 
     <declare-styleable name="SimpleExpandableCardView">
+        <attr name="icon" format="reference"/>
         <attr name="title" format="string"/>
     </declare-styleable>
 </resources>

@@ -142,7 +142,7 @@ open class ExpandableCardView @JvmOverloads constructor(
     }
 
     fun setOnExpandChangeListener(expandChangeUnit: (Boolean) -> Unit) {
-        listener = object: OnExpandChangeListener {
+        listener = object : OnExpandChangeListener {
             override fun OnExpandChanged(isExpanded: Boolean) {
                 expandChangeUnit(isExpanded)
             }

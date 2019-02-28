@@ -7,8 +7,13 @@
 
     <TextView
         android:id="@+id/header_textview"
-        android:tag="@string/click_marker"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:tag="@string/click_marker" />
+
+    <ImageView
+        android:id="@+id/header_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
