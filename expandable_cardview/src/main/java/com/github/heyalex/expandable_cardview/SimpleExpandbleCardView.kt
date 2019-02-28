@@ -2,6 +2,7 @@ package com.github.heyalex.expandable_cardview
 
 import android.content.Context
 import android.util.AttributeSet
+import kotlinx.android.synthetic.main.simple_cardview_header.view.*
 
 class SimpleExpandableCardView @JvmOverloads constructor(
     context: Context,
@@ -16,6 +17,15 @@ class SimpleExpandableCardView @JvmOverloads constructor(
         title = typedArray.getString(R.styleable.SimpleExpandableCardView_title)
         headerViewRes = R.layout.simple_cardview_header
         typedArray.recycle()
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        header_textview.text = title
+    }
+
+    fun setTitle(title : String) {
+        this.title = title
     }
 
 }
