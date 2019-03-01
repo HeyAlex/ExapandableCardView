@@ -53,6 +53,13 @@ class SimpleExpandableCardView @JvmOverloads constructor(
         header_icon.background = iconDrawable
     }
 
+    override fun beforeExpandStart() {
+        header_icon.startAnimation(defaultAnimationOnExpanding)
+    }
+
+    override fun beforeCollapseStart() {
+        header_icon.startAnimation(defaultAnimationOnCollapsing)
+    }
 
     fun setIcon(@DrawableRes drawableRes: Int) {
         iconDrawable = ContextCompat.getDrawable(context, drawableRes)
