@@ -7,30 +7,33 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.github.heyalex.expandable_cardview.ExpandableCardView
+    <!--<com.github.heyalex.expandable_cardview.ExpandableCardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:content_view="@layout/content_view"-->
+        <!--app:expanded="true"-->
+        <!--app:header_view="@layout/header_view">-->
+
+    <!--</com.github.heyalex.expandable_cardview.ExpandableCardView>-->
+
+    <!--<com.github.heyalex.expandable_cardview.ExpandableCardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:content_view="@layout/content_view"-->
+        <!--app:expanded="false"-->
+        <!--app:header_view="@layout/header_view">-->
+
+    <!--</com.github.heyalex.expandable_cardview.ExpandableCardView>-->
+
+    <com.github.heyalex.expandable_cardview.SimpleExpandableCardView
+        android:layout_width="match_parent"
         android:id="@+id/expanded_card"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:content_view="@layout/content_view"
-        app:expanded="true"
-        app:header_view="@layout/header_view">
-
-    </com.github.heyalex.expandable_cardview.ExpandableCardView>
-
-    <com.github.heyalex.expandable_cardview.ExpandableCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:content_view="@layout/content_view"
-        app:expanded="false"
-        app:header_view="@layout/header_view">
-
-    </com.github.heyalex.expandable_cardview.ExpandableCardView>
-
-    <com.github.heyalex.expandable_cardview.SimpleExpandbleCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_launcher_background"
+        app:title="@string/app_name"
+        app:degreeIconAnimation="15"
         app:content_view="@layout/content_view"
         app:expanded="false">
 
-    </com.github.heyalex.expandable_cardview.SimpleExpandbleCardView>
+    </com.github.heyalex.expandable_cardview.SimpleExpandableCardView>
 </LinearLayout>
