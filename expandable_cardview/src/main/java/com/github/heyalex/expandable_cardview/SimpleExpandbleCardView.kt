@@ -45,6 +45,10 @@ class SimpleExpandableCardView @JvmOverloads constructor(
             0.5f
         )
 
+        defaultAnimationOnExpanding.fillAfter = true
+        defaultAnimationOnCollapsing.fillAfter = true
+        defaultAnimationOnExpanding.duration = animDuration
+        defaultAnimationOnCollapsing.duration = animDuration
     }
 
     override fun onFinishInflate() {
@@ -52,6 +56,7 @@ class SimpleExpandableCardView @JvmOverloads constructor(
         header_textview.text = title
         header_icon.background = iconDrawable
     }
+
 
     override fun beforeExpandStart() {
         header_icon.startAnimation(defaultAnimationOnExpanding)
