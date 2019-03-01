@@ -34,7 +34,7 @@ open class ExpandableCardView @JvmOverloads constructor(
         private set
 
     private var isMoving: Boolean = false
-    private var animDuration: Long
+    protected var animDuration: Long
 
     private val defaultClickListener = OnClickListener {
         if (isExpanded)
@@ -113,9 +113,12 @@ open class ExpandableCardView @JvmOverloads constructor(
                 isMoving = false
             }
             duration = timeAnim
+            beforeExpandStart()
             start()
         }
     }
+
+    protected open fun beforeExpandStart() {}
 
     fun collapse(timeAnim: Long = animDuration) {
         if (isMoving) return
@@ -129,9 +132,14 @@ open class ExpandableCardView @JvmOverloads constructor(
                 isMoving = false
             }
             duration = timeAnim
+            beforeCollapseStart()
             start()
         }
     }
+
+
+    protected open fun beforeCollapseStart() {}
+
 
     fun removeOnExpandChangeListener() {
         this.listener = null
