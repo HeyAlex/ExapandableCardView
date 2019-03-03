@@ -23,9 +23,10 @@ class SimpleExpandableCardView @JvmOverloads constructor(
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleExpandableCardView)
+        val defaultDegree = context.resources.getInteger(R.integer.degree).toFloat()
         degreeAnimation = typedArray.getFloat(
             R.styleable.SimpleExpandableCardView_degreeIconAnimation,
-            DEFAULT_DEGREE_ANIMATION
+            defaultDegree
         )
         title = typedArray.getString(R.styleable.SimpleExpandableCardView_title)
         iconDrawable = typedArray.getDrawable(R.styleable.SimpleExpandableCardView_icon)
@@ -76,9 +77,5 @@ class SimpleExpandableCardView @JvmOverloads constructor(
 
     fun setIcon(icon: Drawable) {
         iconDrawable = icon
-    }
-
-    companion object {
-        const val DEFAULT_DEGREE_ANIMATION = 180f
     }
 }
