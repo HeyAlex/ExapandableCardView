@@ -74,7 +74,6 @@ open class ExpandableCardView @JvmOverloads constructor(
         contentView = card_content.inflate()
 
         initClickListeners()
-        Log.d("CHECK", "onFinishInflate")
     }
 
     private fun slideAnimator(start: Int, end: Int): ValueAnimator {
@@ -193,7 +192,6 @@ open class ExpandableCardView @JvmOverloads constructor(
     }
 
     override fun onSaveInstanceState(): Parcelable? {
-        Log.d("CHECK", "onSaveInstanceState")
         val superState = super.onSaveInstanceState()
         val customViewSavedState = ExpandedCardSavedState(superState)
         customViewSavedState.isExpanded = isExpanded
@@ -201,7 +199,6 @@ open class ExpandableCardView @JvmOverloads constructor(
     }
 
     override fun onRestoreInstanceState(state: Parcelable) {
-        Log.d("CHECK", "onRestoreInstanceState")
         val customViewSavedState = state as ExpandedCardSavedState
         isExpanded = customViewSavedState.isExpanded
         super.onRestoreInstanceState(customViewSavedState.superState)
@@ -209,13 +206,9 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        Log.d("CHECK", "onAttachedToWindow, isExpandend = $isExpanded")
-
         if (!isExpanded) {
-            Log.d("CHECK", "Collapsing")
             collapse(timeAnim = 0)
         }
-
     }
 
 
