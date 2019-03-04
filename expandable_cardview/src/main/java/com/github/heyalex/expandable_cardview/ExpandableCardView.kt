@@ -3,15 +3,18 @@ package com.github.heyalex.expandable_cardview
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
-import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
+
 
 open class ExpandableCardView @JvmOverloads constructor(
     context: Context,
@@ -53,7 +56,7 @@ open class ExpandableCardView @JvmOverloads constructor(
             typedArray.getResourceId(R.styleable.ExpandableCardView_header_view, View.NO_ID)
         contentViewRes =
             typedArray.getResourceId(R.styleable.ExpandableCardView_content_view, View.NO_ID)
-        isExpandedOnStart = typedArray.getBoolean(R.styleable.ExpandableCardView_expanded, false)
+        isExpanded = typedArray.getBoolean(R.styleable.ExpandableCardView_expanded, false)
         val defaultDuration = context.resources.getInteger(R.integer.duration)
         animDuration = typedArray.getInteger(
             R.styleable.ExpandableCardView_animation_duration,
@@ -71,18 +74,7 @@ open class ExpandableCardView @JvmOverloads constructor(
         contentView = card_content.inflate()
 
         initClickListeners()
-
-        if (!isExpandedOnStart) {
-            collapse(timeAnim = 0)
-        }
-
-        headerView.setOnClickListener {
-            if (isExpanded) {
-                collapse()
-            } else {
-                expand()
-            }
-        }
+        Log.d("CHECK", "onFinishInflate")
     }
 
     private fun slideAnimator(start: Int, end: Int): ValueAnimator {
@@ -140,9 +132,7 @@ open class ExpandableCardView @JvmOverloads constructor(
         }
     }
 
-
     protected open fun beforeCollapseStart() {}
-
 
     fun removeOnExpandChangeListener() {
         this.listener = null
@@ -200,5 +190,62 @@ open class ExpandableCardView @JvmOverloads constructor(
 
         }
         return views
+    }
+
+    override fun onSaveInstanceState(): Parcelable? {
+        Log.d("CHECK", "onSaveInstanceState")
+        val superState = super.onSaveInstanceState()
+        val customViewSavedState = ExpandedCardSavedState(superState)
+        customViewSavedState.isExpanded = isExpanded
+        return customViewSavedState
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable) {
+        Log.d("CHECK", "onRestoreInstanceState")
+        val customViewSavedState = state as ExpandedCardSavedState
+        isExpanded = customViewSavedState.isExpanded
+        super.onRestoreInstanceState(customViewSavedState.superState)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        Log.d("CHECK", "onAttachedToWindow, isExpandend = $isExpanded")
+
+        if (!isExpanded) {
+            Log.d("CHECK", "Collapsing")
+            collapse(timeAnim = 0)
+        }
+
+    }
+
+
+    private class ExpandedCardSavedState : View.BaseSavedState {
+
+        internal var isExpanded: Boolean = false
+
+        constructor(superState: Parcelable) : super(superState)
+
+        private constructor(source: Parcel) : super(source) {
+            isExpanded = source.readInt() == 1
+        }
+
+        override fun writeToParcel(out: Parcel, flags: Int) {
+            super.writeToParcel(out, flags)
+            out.writeInt(if (isExpanded) 1 else 0)
+        }
+
+        companion object CREATOR : Parcelable.Creator<ExpandedCardSavedState> {
+            override fun createFromParcel(source: Parcel): ExpandedCardSavedState {
+                return ExpandedCardSavedState(source)
+            }
+
+            override fun newArray(size: Int): Array<ExpandedCardSavedState?> {
+                return arrayOfNulls(size)
+            }
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
     }
 }
