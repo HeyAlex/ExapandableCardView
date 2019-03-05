@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -14,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
-
 
 open class ExpandableCardView @JvmOverloads constructor(
     context: Context,
@@ -24,7 +22,6 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     private lateinit var headerView: View
     private lateinit var contentView: View
-    private var isExpandedOnStart: Boolean = false
 
     @LayoutRes
     protected var headerViewRes: Int = 0
@@ -210,7 +207,6 @@ open class ExpandableCardView @JvmOverloads constructor(
             collapse(timeAnim = 0)
         }
     }
-
 
     private class ExpandedCardSavedState : View.BaseSavedState {
 
