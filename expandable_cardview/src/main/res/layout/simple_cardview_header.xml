@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/simple_header"
     android:layout_width="wrap_content"
-    android:layout_height="60dp"
+    android:layout_height="@dimen/simple_cardview_height"
     android:gravity="center_vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:paddingTop="@dimen/default_padding"
+    android:paddingBottom="@dimen/default_padding">
 
     <TextView
         android:id="@+id/header_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
         android:maxLines="1"
-        android:textSize="16sp" />
+        android:textSize="@dimen/default_textsize"
+        tools:text="" />
 
     <ImageView
-        android:id="@+id/header_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/header_expand_icon"
+        android:layout_width="@dimen/default_expand_icon_size"
+        android:layout_height="@dimen/default_expand_icon_size"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:layout_toStartOf="@id/header_textview"
+        android:layout_toLeftOf="@id/header_textview"
         android:src="@drawable/ic_expand_more"
         android:tag="@string/click_marker" />
 

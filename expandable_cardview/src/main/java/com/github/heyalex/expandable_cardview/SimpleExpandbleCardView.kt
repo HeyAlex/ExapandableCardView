@@ -55,16 +55,16 @@ class SimpleExpandableCardView @JvmOverloads constructor(
     override fun onFinishInflate() {
         super.onFinishInflate()
         header_textview.text = title
-        header_icon.background = iconDrawable
+        header_expand_icon.background = iconDrawable
     }
 
 
     override fun beforeExpandStart() {
-        header_icon.startAnimation(defaultAnimationOnExpanding)
+        header_expand_icon.startAnimation(defaultAnimationOnExpanding)
     }
 
     override fun beforeCollapseStart() {
-        header_icon.startAnimation(defaultAnimationOnCollapsing)
+        header_expand_icon.startAnimation(defaultAnimationOnCollapsing)
     }
 
     fun setIcon(@DrawableRes drawableRes: Int) {
