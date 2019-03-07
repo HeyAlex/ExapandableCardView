@@ -16,13 +16,14 @@ import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
 
 open class ExpandableCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : CardView(context, attrs, defStyleAttr) {
 
     private lateinit var headerView: View
     private lateinit var contentView: View
@@ -48,10 +49,13 @@ open class ExpandableCardView @JvmOverloads constructor(
             expand()
     }
 
+    protected var inCardElevation: Int = 0
     private var listener: OnExpandChangeListener? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.expandable_cardview, this)
+//        card_root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.cardview_light_background))
+//        card_root.preventCornerOverlap = true
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableCardView)
         headerViewRes =
             typedArray.getResourceId(R.styleable.ExpandableCardView_header_view, View.NO_ID)
@@ -65,13 +69,13 @@ open class ExpandableCardView @JvmOverloads constructor(
         ).toLong()
         typedArray.recycle()
 
-//
-//        val typedArrayCardView = context.obtainStyledAttributes(attrs, R.styleable.CardView)
+
+        val typedArrayCardView = context.obtainStyledAttributes(attrs, R.styleable.CardView)
 //        val defaultElevation =
-//            typedArrayCardView.getDimension(R.styleable.CardView_cardElevation, 0f)
-//        cardElevation =
+//        inCardElevation =  typedArrayCardView.getDimensionPixelOffset(R.styleable.CardView_cardElevation, 101)
+//        cardElevation = defaultElevation.toFloat()
 //            typedArray.getDimension(R.styleable.ExpandableCardView_card_elevation, defaultElevation)
-//        typedArrayCardView.recycle()
+        typedArrayCardView.recycle()
     }
 
     override fun onFinishInflate() {
@@ -83,7 +87,8 @@ open class ExpandableCardView @JvmOverloads constructor(
         contentView = card_content.inflate()
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            card_root.elevation = cardElevation
+//            card_root.cardElevation = 101f
+//            card_root.radius = 100f
 //        }
 
         initClickListeners()

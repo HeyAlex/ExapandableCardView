@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.expandable_cardview.view.*
 import kotlinx.android.synthetic.main.simple_cardview_header.view.*
 
 class SimpleExpandableCardView @JvmOverloads constructor(
