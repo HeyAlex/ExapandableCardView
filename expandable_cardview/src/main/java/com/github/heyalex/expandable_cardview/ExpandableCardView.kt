@@ -3,6 +3,7 @@ package com.github.heyalex.expandable_cardview
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -11,7 +12,10 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.LinearLayout
+import androidx.annotation.Dimension
 import androidx.annotation.LayoutRes
+import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
 
 open class ExpandableCardView @JvmOverloads constructor(
@@ -60,6 +64,14 @@ open class ExpandableCardView @JvmOverloads constructor(
             defaultDuration
         ).toLong()
         typedArray.recycle()
+
+//
+//        val typedArrayCardView = context.obtainStyledAttributes(attrs, R.styleable.CardView)
+//        val defaultElevation =
+//            typedArrayCardView.getDimension(R.styleable.CardView_cardElevation, 0f)
+//        cardElevation =
+//            typedArray.getDimension(R.styleable.ExpandableCardView_card_elevation, defaultElevation)
+//        typedArrayCardView.recycle()
     }
 
     override fun onFinishInflate() {
@@ -69,6 +81,10 @@ open class ExpandableCardView @JvmOverloads constructor(
 
         card_content.layoutResource = contentViewRes
         contentView = card_content.inflate()
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            card_root.elevation = cardElevation
+//        }
 
         initClickListeners()
     }
@@ -190,9 +206,12 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState()
-        val customViewSavedState = ExpandedCardSavedState(superState)
-        customViewSavedState.isExpanded = isExpanded
-        return customViewSavedState
+        superState?.let {
+            val customViewSavedState = ExpandedCardSavedState(superState)
+            customViewSavedState.isExpanded = isExpanded
+            return customViewSavedState
+        }
+        return superState
     }
 
     override fun onRestoreInstanceState(state: Parcelable) {

@@ -29,6 +29,8 @@
     <com.github.heyalex.expandable_cardview.SimpleExpandableCardView
         android:layout_width="match_parent"
         android:id="@+id/expanded_card"
+        android:layout_margin="10dp"
+        android:elevation="4dp"
         android:layout_height="wrap_content"
         app:title="@string/app_name"
         app:degreeIconAnimation="15"
