@@ -3,7 +3,6 @@ package com.github.heyalex.expandable_cardview
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -11,12 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import androidx.annotation.Dimension
 import androidx.annotation.LayoutRes
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.expandable_cardview.view.*
 
 open class ExpandableCardView @JvmOverloads constructor(
