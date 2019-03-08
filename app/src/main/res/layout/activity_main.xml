@@ -7,36 +7,33 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--<com.github.heyalex.expandable_cardview.ExpandableCardView-->
-        <!--android:id="@+id/expanded_card"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:content_view="@layout/content_view"-->
-        <!--app:expanded="true"-->
-        <!--app:header_view="@layout/header_view">-->
+    <com.github.heyalex.expandable_cardview.ExpandableCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:content_view="@layout/content_view"
+        app:expanded="false"
+        app:header_view="@layout/header_view" />
 
-    <!--</com.github.heyalex.expandable_cardview.ExpandableCardView>-->
+    <com.github.heyalex.expandable_cardview.ExpandableCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:content_view="@layout/content_view"
+        app:expanded="true"
+        app:header_view="@layout/header_view" />
 
-    <!--<com.github.heyalex.expandable_cardview.ExpandableCardView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:content_view="@layout/content_view"-->
-        <!--app:expanded="false"-->
-        <!--app:header_view="@layout/header_view">-->
-
-    <!--</com.github.heyalex.expandable_cardview.ExpandableCardView>-->
 
     <com.github.heyalex.expandable_cardview.SimpleExpandableCardView
-        android:layout_width="match_parent"
         android:id="@+id/expanded_card"
-        android:layout_margin="10dp"
-        android:elevation="4dp"
-        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/app_name"
-        app:degreeIconAnimation="15"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
         app:content_view="@layout/content_view"
-        app:expanded="false">
+        app:expanded="false"
+        app:title="@string/app_name" />
 
-    </com.github.heyalex.expandable_cardview.SimpleExpandableCardView>
 </LinearLayout>
