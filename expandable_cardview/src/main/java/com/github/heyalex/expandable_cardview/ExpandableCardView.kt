@@ -44,13 +44,10 @@ open class ExpandableCardView @JvmOverloads constructor(
             expand()
     }
 
-    protected var inCardElevation: Int = 0
     private var listener: OnExpandChangeListener? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.expandable_cardview, this)
-//        card_root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.cardview_light_background))
-//        card_root.preventCornerOverlap = true
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableCardView)
         headerViewRes =
             typedArray.getResourceId(R.styleable.ExpandableCardView_header_view, View.NO_ID)
@@ -63,14 +60,6 @@ open class ExpandableCardView @JvmOverloads constructor(
             defaultDuration
         ).toLong()
         typedArray.recycle()
-
-
-        val typedArrayCardView = context.obtainStyledAttributes(attrs, R.styleable.CardView)
-//        val defaultElevation =
-//        inCardElevation =  typedArrayCardView.getDimensionPixelOffset(R.styleable.CardView_cardElevation, 101)
-//        cardElevation = defaultElevation.toFloat()
-//            typedArray.getDimension(R.styleable.ExpandableCardView_card_elevation, defaultElevation)
-        typedArrayCardView.recycle()
     }
 
     override fun onFinishInflate() {
@@ -80,11 +69,6 @@ open class ExpandableCardView @JvmOverloads constructor(
 
         card_content.layoutResource = contentViewRes
         contentView = card_content.inflate()
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            card_root.cardElevation = 101f
-//            card_root.radius = 100f
-//        }
 
         initClickListeners()
     }

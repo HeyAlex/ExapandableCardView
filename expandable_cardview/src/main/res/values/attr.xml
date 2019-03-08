@@ -5,7 +5,6 @@
         <attr name="content_view" format="reference"/>
         <attr name="expanded" format="boolean"/>
         <attr name="animation_duration" format="integer"/>
-        <attr name="card_elevation" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="SimpleExpandableCardView">
