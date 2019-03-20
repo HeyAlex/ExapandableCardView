@@ -86,7 +86,7 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     fun expand(timeAnim: Long = animDuration) {
         if (isMoving) return
-        listener?.OnExpandChanged(true)
+        listener?.onExpandChanged(true)
         isMoving = true
         contentView.visibility = View.VISIBLE
 
@@ -112,7 +112,7 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     fun collapse(timeAnim: Long = animDuration) {
         if (isMoving) return
-        listener?.OnExpandChanged(false)
+        listener?.onExpandChanged(false)
         isMoving = true
         val finalHeight = contentView.height
 
@@ -140,7 +140,7 @@ open class ExpandableCardView @JvmOverloads constructor(
 
     fun setOnExpandChangeListener(expandChangeUnit: (Boolean) -> Unit) {
         listener = object : OnExpandChangeListener {
-            override fun OnExpandChanged(isExpanded: Boolean) {
+            override fun onExpandChanged(isExpanded: Boolean) {
                 expandChangeUnit(isExpanded)
             }
         }
