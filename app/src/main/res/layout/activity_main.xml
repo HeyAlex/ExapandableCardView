@@ -20,10 +20,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:elevation="4dp"
                 app:cardCornerRadius="10dp"
-                app:content_view="@layout/content_view"
+                app:content_view="@layout/profile_content"
                 app:expanded="false"
-                app:header_view="@layout/header_view" />
+                app:header_view="@layout/profile_header" />
 
             <com.github.heyalex.expandable_cardview.ExpandableCardView
                 android:layout_width="match_parent"
