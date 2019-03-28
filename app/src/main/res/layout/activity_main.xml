@@ -24,15 +24,18 @@
                 app:cardCornerRadius="10dp"
                 app:content_view="@layout/profile_content"
                 app:expanded="false"
+                app:animation_duration="250"
+                tools:expanded="true"
                 app:header_view="@layout/profile_header" />
 
             <com.github.heyalex.expandable_cardview.ExpandableCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:animation_duration="250"
                 android:layout_margin="10dp"
-                app:content_view="@layout/content_view"
-                app:expanded="true"
-                app:header_view="@layout/header_view" />
+                app:content_view="@layout/airport_facilities_content"
+                app:expanded="false"
+                app:header_view="@layout/airport_facilities_header" />
 
 
             <com.github.heyalex.expandable_cardview.SimpleExpandableCardView
@@ -43,7 +46,7 @@
                 app:cardCornerRadius="10dp"
                 app:content_view="@layout/content_view"
                 app:degreeIconAnimation="180"
-                app:expanded="false"
+                app:expanded="true"
                 app:title="@string/app_name" />
 
         </LinearLayout>
