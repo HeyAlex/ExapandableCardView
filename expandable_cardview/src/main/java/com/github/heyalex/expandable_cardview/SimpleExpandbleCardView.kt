@@ -38,12 +38,20 @@ class SimpleExpandableCardView @JvmOverloads constructor(
 
     private fun initAnimation() {
         defaultAnimationOnExpanding = RotateAnimation(
-            0f, degreeAnimation, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+            0f,
+            degreeAnimation,
+            Animation.RELATIVE_TO_SELF,
+            DEFAULT_PIVOT,
+            Animation.RELATIVE_TO_SELF,
             0.5f
         )
 
         defaultAnimationOnCollapsing = RotateAnimation(
-            degreeAnimation, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+            degreeAnimation,
+            0f,
+            Animation.RELATIVE_TO_SELF,
+            DEFAULT_PIVOT,
+            Animation.RELATIVE_TO_SELF,
             0.5f
         )
 
@@ -78,5 +86,9 @@ class SimpleExpandableCardView @JvmOverloads constructor(
 
     fun setIcon(icon: Drawable) {
         iconDrawable = icon
+    }
+
+    companion object {
+        const val DEFAULT_PIVOT = 0.5f
     }
 }

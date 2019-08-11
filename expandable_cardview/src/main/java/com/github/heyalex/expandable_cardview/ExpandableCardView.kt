@@ -91,8 +91,8 @@ open class ExpandableCardView @JvmOverloads constructor(
         contentView.visibility = View.VISIBLE
 
         contentView.measure(
-            View.MeasureSpec.makeMeasureSpec(card_root.width, View.MeasureSpec.EXACTLY),
-            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+            MeasureSpec.makeMeasureSpec(card_root.width, MeasureSpec.EXACTLY),
+            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
         )
 
         val targetHeight = contentView.measuredHeight
@@ -211,7 +211,7 @@ open class ExpandableCardView @JvmOverloads constructor(
         }
     }
 
-    private class ExpandedCardSavedState : View.BaseSavedState {
+    private class ExpandedCardSavedState : BaseSavedState {
 
         internal var isExpanded: Boolean = false
 
