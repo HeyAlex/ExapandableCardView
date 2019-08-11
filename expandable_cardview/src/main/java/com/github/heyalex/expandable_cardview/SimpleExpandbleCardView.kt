@@ -7,7 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.expandable_cardview.view.*
+import androidx.core.view.ViewCompat
 import kotlinx.android.synthetic.main.simple_cardview_header.view.*
 
 class SimpleExpandableCardView @JvmOverloads constructor(
@@ -56,7 +56,7 @@ class SimpleExpandableCardView @JvmOverloads constructor(
     override fun onFinishInflate() {
         super.onFinishInflate()
         header_textview.text = title
-        header_expand_icon.background = iconDrawable
+        ViewCompat.setBackground(header_expand_icon, iconDrawable)
     }
 
 
