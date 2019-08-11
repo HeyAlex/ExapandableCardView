@@ -30,7 +30,9 @@ class SimpleExpandableCardView @JvmOverloads constructor(
             defaultDegree
         )
         title = typedArray.getString(R.styleable.SimpleExpandableCardView_title)
-        iconDrawable = typedArray.getDrawable(R.styleable.SimpleExpandableCardView_icon)
+        val drawable = typedArray.getDrawable(R.styleable.SimpleExpandableCardView_icon)
+        iconDrawable = drawable ?: ContextCompat.getDrawable(context, R.drawable.ic_expand_more)
+
         headerViewRes = R.layout.simple_cardview_header
         typedArray.recycle()
         initAnimation()

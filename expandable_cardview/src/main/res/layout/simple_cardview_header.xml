@@ -32,7 +32,6 @@
         android:layout_marginRight="20dp"
         android:layout_toStartOf="@id/header_textview"
         android:layout_toLeftOf="@id/header_textview"
-        android:src="@drawable/ic_expand_more"
         android:tag="@string/click_marker" />
 
 </RelativeLayout>
