@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="@dimen/simple_cardview_height"
     android:gravity="center_vertical"
+    android:tag="@string/click_marker"
     android:paddingTop="@dimen/default_padding"
     android:paddingBottom="@dimen/default_padding">
 
@@ -31,7 +32,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_toStartOf="@id/header_textview"
-        android:layout_toLeftOf="@id/header_textview"
-        android:tag="@string/click_marker" />
+        android:layout_toLeftOf="@id/header_textview" />
 
 </RelativeLayout>
