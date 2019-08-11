@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Email:"
+            android:text="1."
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="fake_mail@fake_domain.com"
+            android:text="Moscow"
             android:textColor="@android:color/primary_text_light"
             android:textSize="18sp" />
     </LinearLayout>
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Company:"
+            android:text="2."
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="Delivery Hero"
+            android:text="Amsterdam"
             android:textColor="@android:color/primary_text_light"
             android:textSize="18sp" />
     </LinearLayout>
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Birthday date:"
+            android:text="3."
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="01.01.1771"
+            android:text="Barcelona"
             android:textColor="@android:color/primary_text_light"
             android:textSize="18sp" />
     </LinearLayout>
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Nickname:"
+            android:text="4."
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="tv_slave"
+            android:text="Delft"
             android:textColor="@android:color/primary_text_light"
             android:textSize="18sp" />
     </LinearLayout>
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Hobby:"
+            android:text="5."
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="zerø deaths"
+            android:text="Moscow"
             android:textColor="@android:color/primary_text_light"
             android:textSize="18sp" />
     </LinearLayout>
